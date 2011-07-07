@@ -23,10 +23,13 @@ public class SecuredAspect {
     @Around("secured()")
     public Object aroundCachedMethods(ProceedingJoinPoint thisJoinPoint)
 	    throws Throwable {
-	MethodSignature signature = (MethodSignature) thisJoinPoint
-		.getSignature();
-	Method m = signature.getMethod();
-	Secured annotation = m.getAnnotation(Secured.class);
+	MethodSignature s = (MethodSignature) thisJoinPoint.getSignature();
+	Object target = thisJoinPoint.getTarget();
+	Class<? extends Object> clazz = target.getClass();
+	String methodName = s.getMethod().getName();
+	Class<?>[] paramTypes = s.getParameterTypes();
+	Method declaredMethod = clazz.getDeclaredMethod(methodName, paramTypes);
+	Secured annotation = declaredMethod.getAnnotation(Secured.class);
 	boolean admin = annotation.admin();
 	UserService userService = UserServiceFactory.getUserService();
 	boolean userLoggedIn = userService.isUserLoggedIn();

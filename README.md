@@ -9,7 +9,8 @@ compile:
 
     mvn compile war:exploded
 
-run:
+run using GAE dev_appserver tool:
+
     ./dev_appserver.sh target/gae-security
 
 and navigate to [ http://localhost:8080 ].

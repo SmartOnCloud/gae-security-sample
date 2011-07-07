@@ -60,7 +60,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- AspectJ for dynamic CGLIB based aspects (cache) -->
+		<!-- AspectJ for dynamic CGLIB based aspects -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -97,7 +97,6 @@
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<outputDirectory>${basedir}/target/${project.artifactId}/WEB-INF/classes</outputDirectory>
-
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
